@@ -2,11 +2,10 @@
 html, body {
     width: 100%;
     height: 100%;
-    background: #eee;
     overflow: hidden;
+    font-family:"\5FAE\8F6F\96C5\9ED1",Helvetica,sans-serif;
 }
-
-html {
+html{
     font-size: 100px;
 }
 
@@ -17,10 +16,10 @@ html {
 
 /*--音乐--*/
 .music {
-    display: none;
+    /*display: none;*/
     position: absolute;
-    top: .2rem;
-    right: .2rem;
+    top: .4rem;
+    right: .4rem;
     z-index: 1000;
     width: .6rem;
     height: .6rem;
@@ -29,8 +28,8 @@ html {
 }
 
 .musicMove {
-    -webkit-animation: musicMove .5s linear infinite both;
-    animation: musicMove .5s linear infinite both;
+    -webkit-animation: musicMove 1.2s linear infinite both;
+    animation: musicMove 1.2s linear infinite both;
 }
 
 @-webkit-keyframes musicMove {
@@ -54,128 +53,579 @@ html {
         transform: rotate(360deg);
     }
 }
-
-/*--第一屏幕--*/
-.page1 {
+.page1,.page2,.page3,.page4{
     position: relative;
-    background: url("../img/bg1.jpg") no-repeat;
+    background: url("../images/background1.jpg") no-repeat;
     background-size: cover;
 }
-
-.page1 img {
+.page1 img,.page2 img,.page2 section,.page3 img,.page3 div,
+.page4 img,.page4 section,.page4 div{
     position: absolute;
     opacity: 0;
 }
-
+/*--第一屏幕--*/
 .page1 img:nth-child(1) {
-    top: .28rem;
-    left: 2rem;
-    width: .96rem;
-    height: 2.32rem;
-}
-
+     top: 2.75rem;
+     left: .4rem;
+     width: 5.5rem;
+     height: 2.2rem;
+ }
 .page1 img:nth-child(2) {
-    top: .28rem;
-    right: 0;
-    width: 3.7rem;
-    height: 6rem;
+    bottom:.8rem;
+    left:0;
+    width: 6.4rem;
+    height: 4rem;
+}
+.page1 img:nth-child(3),.page2 img:nth-child(3),.page3 img:nth-child(1),.page4 img:nth-child(1){
+    width:100%;
+    height:100%;
 }
 
-.page1 img:nth-child(3) {
-    bottom: .8rem;
-    left: .5rem;
-    width: 5.5rem;
-    height: 5.1rem;
-}
-
-.page1 img:nth-child(4) {
-    bottom: 0;
-    left: -1.6rem;
-    width: 7.85rem;
-    height: 5.87rem;
-}
-
-/*
-    切屏实现运动的原理:
-    ->我们事先把所有的元素的运动都设定在一个指定的条件中,在这里我们可以设定条件为ID选择器之下的
-    ->只要划入到当前屏幕，我们就给本屏幕加上对应的ID；当划入到其他屏幕的时候我们把当前这一屏幕的ID移除掉；
-*/
+/*--move第一屏幕--*/
 #page1 img:nth-child(1) {
-    -webkit-animation: bounceInLeft 1s both;
-    animation: bounceInLeft 1s both;
+    -webkit-animation: zoomIn 1s both;
+    animation: zoomIn 1s both;
 }
 
 #page1 img:nth-child(2) {
-    -webkit-animation: bounceInRight 1s .3s both;
-    animation: bounceInRight 1s .3s both;
-}
-
-#page1 img:nth-child(3) {
-    -webkit-animation: bounceInUp 1s .6s both;
-    animation: bounceInUp 1s .6s both;
-}
-
-#page1 img:nth-child(4) {
-    -webkit-animation: bounceInUp 1s .9s both;
-    animation: bounceInUp 1s .9s both;
+    -webkit-animation: fadeInUp 1s .3s both;
+    animation: fadeInUp 1s .3s both;
 }
 
 /*--第二屏幕--*/
-.page2 {
-    position: relative;
-    background: url("../img/bg2.jpg") no-repeat;
-    background-size: cover;
+.page2 img:nth-child(1){
+    width:4.18rem;
+    height:2.21rem;
+    left:0.4rem;
+    top:2rem;
+    z-index:1;
+}
+.page2 img:nth-child(2){
+    width:3.86rem;
+    height:1.68rem;
+    left:2.3rem;
+    top:7.5rem;
+    z-index:1;
+}
+.page2 .one{
+    width:2.6rem;
+    left:1.3rem;
+    top:3.5rem;
+}
+.page2 .two{
+    width:3.5rem;
+    left:1.6rem;
+    top:4.5rem;
+}
+.page2 .two span{
+    height: 12.5%;
+    line-height:0.64rem;
+    font-weight:bold;
+    color:#404449;
+    font-size:0.32rem;
+}
+.page2 .one span{
+   font-size:0.48rem;
+   font-weight: bold;
+   color:#404449;
+}
+.page2 .one span:last-child{
+    font-size:0.24rem;
+    font-weight: initial;
 }
 
-.page2 img {
-    position: absolute;
-    top: 2.5rem;
-    width: .61rem;
-    height: 6.37rem;
-    opacity: 0;
+/*--move第二屏幕--*/
+#page2 img:nth-child(1){
+    -webkit-animation: bounceInDown 1s both;
+    animation: bounceInDown 1s both;
 }
 
-.page2 img:nth-child(1) {
-    top: 0;
-    left: 0;
-    width: 3.4rem;
-    height: 1.74rem;
+#page2 img:nth-child(2){
+    -webkit-animation: bounceInUp 1s 0.3s both;
+    animation: bounceInUp 1s 0.3s both;
 }
 
-.page2 img:nth-child(2) {
-    left: 1.48rem;
+#page2 .one{
+    -webkit-animation: fadeInLeft 1s 0.5s both;
+    animation: fadeInLeft 1s 0.5s both;
 }
 
-.page2 img:nth-child(3) {
-    left: 3rem;
+#page2 section:last-child{
+    -webkit-animation: fadeInLeft 1s 0.8s both;
+    animation: fadeInLeft 1s 0.8s both;
 }
 
-.page2 img:nth-child(4) {
-    left: 4.5rem;
+
+/*--第三屏幕--*/
+.page3 img:nth-child(2){
+    width:3.23rem;
+    height:1.84rem;
+    top:1.2rem;
+    left:0.8rem;
+}
+.page3 img:nth-child(3){
+    width:5.46rem;
+    height:10rem;
+    top:0.5rem;
+    left:1rem;
+}
+.page3 img:nth-child(4){
+    width:1.02rem;
+    height:2.29rem;
+    top:0.5rem;
+    left:5.4rem;
+}
+.page3 div{
+    width:2rem;
+    top:1.3rem;
+    left:1.4rem;
+}
+.page3 div span:first-child{
+    margin-bottom:0.1rem;
+    font-size:0.48rem;
+    color:#404449;
+}
+.page3 div span:last-child{
+    font-size:0.24rem;
+}
+.page3 div:last-child{
+    width:4rem;
+    top:5.3rem;
+    left:1.4rem;
+    font-size:0.64rem;
+    font-weight: bold;
 }
 
-/*设置第二屏幕的动画*/
-#page2 img:nth-child(1) {
+/*--move第三屏幕--*/
+#page3 img:nth-child(4){
+    -webkit-animation: fadeInRight 1s both;
+    animation: fadeInRight 1s both;
+}
+
+#page3 img:nth-child(3){
+    -webkit-animation: fadeInDown 1s 0.3s both;
+    animation: fadeInDown 1s 0.3s both;
+}
+
+#page3 img:nth-child(2){
+    -webkit-animation: bounceInLeft 1s 0.6s both;
+    animation: bounceInLeft 1s 0.6s both;
+}
+
+#page3 .one{
+    -webkit-animation: fadeInLeft 1s 1s both;
+    animation: fadeInLeft 1s 1s both;
+}
+
+#page3 div:last-child{
+    -webkit-animation: bounceInLeft 1s 1.5s both;
+    animation: bounceInLeft 1s 1.5s both;
+}
+
+/*--第四屏幕--*/
+.page4 img:nth-child(2){
+    width:2.54rem;
+    height:0.78rem;
+    top:0.9rem;
+    left:1.2rem;
+}
+.page4 img:nth-child(3){
+    width:2.54rem;
+    height:0.34rem;
+    top:2.5rem;
+    left:2.4rem;
+}
+.page4 img:nth-child(4){
+    width:2.08rem;
+    height:1.94rem;
+    top:7.5rem;
+    left:0.4rem;
+}
+.page4 img:nth-child(5){
+    width:1.48rem;
+    height:1.38rem;
+    top:5.6rem;
+    left:1.2rem;
+}
+.page4 img:nth-child(6){
+    width:1.82rem;
+    height:1.7rem;
+    top:3.8rem;
+    left:1.4rem;
+}
+.page4 img:nth-child(7){
+    width:1.82rem;
+    height:1.7rem;
+    top:5.5rem;
+    left:3.8rem;
+}
+.page4 section{
+    width:2rem;
+    top:1.5rem;
+    left:1.5rem;
+    color:#404449;
+}
+.page4 section span:first-child{
+    display: block;
+    font-size:0.48rem;
+}
+.page4 section span:last-child{
+    display: block;
+    font-size:0.24rem;
+}
+.page4 div{
+    color:rgb(255, 252, 252);
+    font-size:0.4rem;
+}
+.page4 .one{
+    top:4.3rem;
+    left:1.6rem;
+}
+.page4 .two{
+    top:6rem;
+    left:4.2rem;
+}
+.page4 .three{
+    top:8.1rem;
+    left:1.2rem;
+}
+.page4 div:last-child{
+    top:6rem;
+    left:1.5rem;
+}
+
+/*--move第四屏幕--*/
+#page4 img:nth-child(2) {
     -webkit-animation: bounceInLeft 1s both;
     animation: bounceInLeft 1s both;
 }
-
-#page2 img:nth-child(2) {
-    -webkit-animation: zoomIn 1s .3s both;
-    animation: zoomIn 1s .3s both;
+#page4 img:nth-child(3) {
+    -webkit-animation: bounceInRight 1s 0.3s both;
+    animation: bounceInRight 1s 0.3s both;
+}
+#page4 section{
+    -webkit-animation: fadeInLeft 1s 0.6s both;
+    animation: fadeInLeft 1s 0.6s both;
+}
+#page4 img:nth-child(6) {
+    -webkit-animation: bounceIn 1s 0.9s infinite both;
+    animation: bounceIn 1s 0.9s infinite both;
+}
+#page4 img:nth-child(5) {
+    -webkit-animation: bounceIn 1s 1s infinite both;
+    animation: bounceIn 1s 1s infinite both;
+}
+#page4 img:nth-child(4) {
+    -webkit-animation: bounceIn 1s 1.2s infinite both;
+    animation: bounceIn 1s 1.2s infinite both;
+}
+#page4 img:nth-child(7) {
+    -webkit-animation: bounceIn 1s 1.3s infinite both;
+    animation: bounceIn 1s 1.3s infinite both;
+}
+#page4 .one{
+    -webkit-animation: fadeIn 1s 1s both;
+    animation: fadeIn 1s 1s both;
+}
+#page4 .two{
+    -webkit-animation: fadeIn 1s 1s both;
+    animation: fadeIn 1s 1s both;
+}
+#page4 .three{
+    -webkit-animation: fadeIn 1s 1.3s both;
+    animation: fadeIn 1s 1.3s both;
+}
+#page4 div:last-child{
+    -webkit-animation: fadeIn 1s 0.9s both;
+    animation: fadeIn 1s 0.9s both;
 }
 
-#page2 img:nth-child(3) {
-    -webkit-animation: zoomIn 1s .6s both;
-    animation: zoomIn 1s .6s both;
+
+/*动画公式*/
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
-#page2 img:nth-child(4) {
-    -webkit-animation: zoomIn 1s .9s both;
-    animation: zoomIn 1s .9s both;
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
-/*--借用CSS3的Animate.css帧动画库的运动公式--*/
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes bounceInDown {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes bounceInDown {
+    from, 60%, 75%, 90%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -3000px, 0);
+        transform: translate3d(0, -3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 25px, 0);
+        transform: translate3d(0, 25px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, 5px, 0);
+        transform: translate3d(0, 5px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        opacity: 1;
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes bounceInUp {
+    from, 60%, 75%, 90%, to {
+        opacity: 1;
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 3000px, 0);
+        transform: translate3d(0, 3000px, 0);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+    }
+
+    75% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0);
+    }
+
+    90% {
+        -webkit-transform: translate3d(0, -5px, 0);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@-webkit-keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
 @-webkit-keyframes bounceInLeft {
     from, 60%, 75%, 90%, to {
         -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -206,8 +656,8 @@ html {
 
     to {
         opacity: 1;
-        -webkit-transform: none;
-        transform: none;
+        -webkit-transform:none;
+        transform:none;
     }
 }
 
@@ -246,6 +696,7 @@ html {
     }
 }
 
+
 @-webkit-keyframes bounceInRight {
     from, 60%, 75%, 90%, to {
         -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -275,7 +726,7 @@ html {
     }
 
     to {
-        opacity: 1;
+        opcity:1;
         -webkit-transform: none;
         transform: none;
     }
@@ -310,107 +761,95 @@ html {
     }
 
     to {
-        opacity: 1;
+        opacity:1;
         -webkit-transform: none;
         transform: none;
     }
 }
 
-@-webkit-keyframes bounceInUp {
-    from, 60%, 75%, 90%, to {
+@-webkit-keyframes bounceIn {
+    from, 20%, 40%, 60%, 80%, to {
         -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
     }
 
-    from {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 3000px, 0);
-        transform: translate3d(0, 3000px, 0);
-    }
-
-    60% {
-        opacity: 1;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
-
-    75% {
-        -webkit-transform: translate3d(0, 10px, 0);
-        transform: translate3d(0, 10px, 0);
-    }
-
-    90% {
-        -webkit-transform: translate3d(0, -5px, 0);
-        transform: translate3d(0, -5px, 0);
-    }
-
-    to {
-        opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes bounceInUp {
-    from, 60%, 75%, 90%, to {
-        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
-
-    from {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 3000px, 0);
-        transform: translate3d(0, 3000px, 0);
-    }
-
-    60% {
-        opacity: 1;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
-
-    75% {
-        -webkit-transform: translate3d(0, 10px, 0);
-        transform: translate3d(0, 10px, 0);
-    }
-
-    90% {
-        -webkit-transform: translate3d(0, -5px, 0);
-        transform: translate3d(0, -5px, 0);
-    }
-
-    to {
-        opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@-webkit-keyframes zoomIn {
-    from {
+    0% {
         opacity: 0;
         -webkit-transform: scale3d(.3, .3, .3);
         transform: scale3d(.3, .3, .3);
     }
 
-    50% {
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(.9, .9, .9);
+        transform: scale3d(.9, .9, .9);
+    }
+
+    60% {
         opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        -webkit-transform: scale3d(.97, .97, .97);
+        transform: scale3d(.97, .97, .97);
     }
 
     to {
         opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
     }
 }
 
-@keyframes zoomIn {
-    from {
+@keyframes bounceIn {
+    from, 20%, 40%, 60%, 80%, to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+
+    0% {
         opacity: 0;
         -webkit-transform: scale3d(.3, .3, .3);
         transform: scale3d(.3, .3, .3);
     }
 
-    50% {
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(.9, .9, .9);
+        transform: scale3d(.9, .9, .9);
+    }
+
+    60% {
         opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+        -webkit-transform: scale3d(.97, .97, .97);
+        transform: scale3d(.97, .97, .97);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
     }
 
     to {
@@ -418,4 +857,13 @@ html {
     }
 }
 
-/*解决开始的时候显示,然后在动画运动的问题：开始的样式都设置opacity=0 动画结束加上opacity=1*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
